@@ -48,5 +48,5 @@ export const photos = [
   { id: 47, image: require('./assets/photos/image-47.jpg') },
   { id: 48, image: require('./assets/photos/image-48.jpg') },
   { id: 49, image: require('./assets/photos/image-49.jpg') },
-  { id: 50, image: require('./assets/photos/image-50.jpg') }
+  { id: 50, image: require('./assets/photos/image-50.jpg') },
 ];

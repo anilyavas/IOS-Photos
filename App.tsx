@@ -1,10 +1,14 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, FlatList, Image } from 'react-native';
+import { photos } from './data';
 
 export default function App() {
   return (
     <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+      <FlatList
+        data={photos}
+        renderItem={({ item }) => <Image source={item.image} />}
+      />
       <StatusBar style='auto' />
     </View>
   );
