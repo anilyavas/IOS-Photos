@@ -28,8 +28,11 @@ export default function App() {
           )}
         />
       </View>
-      <Carousel />
-      <StatusBar style='light' />
+      <Carousel photos={photos.slice(0, 3)} title='Albums' />
+      <Carousel photos={photos.slice(3, 6)} title='People' />
+      <Carousel photos={photos.slice(6, 9)} title='Featured' />
+
+      <StatusBar style='auto' />
     </ScrollView>
   );
 }

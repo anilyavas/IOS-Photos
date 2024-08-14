@@ -1,17 +1,25 @@
 import { View, Text, StyleSheet, ScrollView, Image } from 'react-native';
-import { photos } from './data';
-export default function Carousel() {
+
+type Carousel = {
+  title: string;
+  photos: any[];
+};
+
+export default function Carousel({ title, photos }: Carousel) {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Title</Text>
+      <Text style={styles.title}>{title}</Text>
       <ScrollView
         showsHorizontalScrollIndicator={false}
         horizontal
         contentContainerStyle={styles.images}
+        snapToAlignment='start'
+        snapToInterval={265}
+        decelerationRate='fast'
       >
-        <Image source={photos[0].image} style={styles.image} />
-        <Image source={photos[1].image} style={styles.image} />
-        <Image source={photos[2].image} style={styles.image} />
+        {photos.map((photo) => (
+          <Image key={photo.id} source={photo.image} style={styles.image} />
+        ))}
       </ScrollView>
     </View>
   );
@@ -26,12 +34,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
   },
   images: {
-    gap: 20,
+    gap: 15,
     paddingHorizontal: 20,
   },
   image: {
-    height: 200,
-    width: 300,
+    height: 150,
+    width: 250,
     borderRadius: 15,
   },
 });
