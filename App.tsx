@@ -13,10 +13,19 @@ import Carousel from './Carousel';
 
 export default function App() {
   const { height, width } = useWindowDimensions();
+
   return (
-    <ScrollView style={styles.container}>
-      <View style={{ height: height / 2 }}>
+    <ScrollView style={styles.container} showsHorizontalScrollIndicator={false}>
+      <ScrollView
+        style={{ height: height / 2 }}
+        horizontal
+        showsHorizontalScrollIndicator={false}
+        snapToInterval={width}
+        snapToAlignment='start'
+        decelerationRate={'fast'}
+      >
         <FlatList
+          style={{ width }}
           contentContainerStyle={{ gap: 2 }}
           columnWrapperStyle={{ gap: 2 }}
           scrollEnabled={false}
@@ -27,7 +36,11 @@ export default function App() {
             <Image source={item.image} style={styles.photo} />
           )}
         />
-      </View>
+        <Image
+          source={photos[10].image}
+          style={{ width, height: '100%', resizeMode: 'cover' }}
+        />
+      </ScrollView>
       <Carousel photos={photos.slice(0, 3)} title='Albums' />
       <Carousel photos={photos.slice(3, 6)} title='People' />
       <Carousel photos={photos.slice(6, 9)} title='Featured' />
